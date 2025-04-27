@@ -1,0 +1,25 @@
+name: mongodb-stack
+
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=pass-123
+      - MONGO_INITDB_DATABASE=book-store
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-volume:/data/db
+    networks:
+      - mongodb-network
+
+volumes:
+  mongodb-volume:
+
+networks:
+  mongodb-network:
+
+#ConnectionString = mongodb://root:pass-123@localhost:27017/book-store?authSource=admin

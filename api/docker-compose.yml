@@ -1,0 +1,13 @@
+# Définition du nom du stack Docker
+name: backend-api-stack
+services:
+  # Définition du service backend-api
+  backend-api:
+    # L'image Docker à utiliser, spécifiée par son utilisateur et le tag 'latest'
+    image: sarra002/backend-image:latest
+    # Nom personnalisé du conteneur (cela permet de l'identifier facilement)
+    container_name: backend-api
+    # Exposition des ports du conteneur vers le VPS
+    # Le port 3001 de votre machine sera lié au port 3001 du conteneur
+    ports:
+      - 3001:3001  # Le format est "hôte:conteneur"

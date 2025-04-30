@@ -1,13 +1,11 @@
-# Définition du nom du stack Docker
 name: backend-api-stack
+
 services:
-  # Définition du service backend-api
   backend-api:
-    # L'image Docker à utiliser, spécifiée par son utilisateur et le tag 'latest'
     image: sarra002/backend-image:latest
-    # Nom personnalisé du conteneur (cela permet de l'identifier facilement)
     container_name: backend-api
-    # Exposition des ports du conteneur vers le VPS
-    # Le port 3001 de votre machine sera lié au port 3001 du conteneur
+    environment:
+      - MONGO_URI=mongodb://root:pass-123@92.113.147.201:27017/book-store?authSource=admin  # MongoDB connection URI
+      - PORT=3001  # Port to run the backend API
     ports:
-      - 3001:3001  # Le format est "hôte:conteneur"
+      - '3001:3001'
